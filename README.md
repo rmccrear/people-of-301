@@ -21,6 +21,16 @@ Then you can run `npm install` and `npm run dev` from the terminal. Be sure you 
     npm install
     npm run dev
 
+You will need to initialize you git repo locally and on github.
+
+    git init
+    git add .
+    git commit -m "initial commit"
+
+Then got to GitHub and create your Repo WITHOUT A README.
+
+You can follow the directions for an existing repo.
+
 ## Features
 
 ### Feature 01
