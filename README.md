@@ -33,6 +33,21 @@ You can follow the directions for an existing repo.
 
 ## Features
 
+Feature 01: Add Images
+Given that a user opens the application in the browser
+When the user navigates to the home page
+Then the photo gallery should display all of the people's images in the gallery.
+
+Number and name of feature: 01 Add Images
+
+Estimate of time needed to complete: 11:19
+
+Start time: 10 min
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
 ### Feature 01
 
 As a User I want to see a list of my classmates.
