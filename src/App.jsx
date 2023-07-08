@@ -7,6 +7,10 @@ import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
 
+{
+  /* The following line can be included in your src/index.js or App.js file */
+}
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // step2 create a component
 class App extends React.Component {
