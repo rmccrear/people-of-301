@@ -31,6 +31,18 @@ Then got to GitHub and create your Repo WITHOUT A README.
 
 You can follow the directions for an existing repo.
 
+### Installing Bootstrap
+
+See https://react-bootstrap.netlify.app/docs/getting-started/introduction
+
+To install React Bootstrap...
+
+    npm install react-bootstrap bootstrap
+
+Then, you must import the CSS into your `App.jsx` file by adding this line to the imports.
+
+    import 'bootstrap/dist/css/bootstrap.min.css';
+
 ## Features
 
 Feature 01: Add Images
