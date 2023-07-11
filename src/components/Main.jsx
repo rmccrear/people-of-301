@@ -21,7 +21,7 @@ class Main extends React.Component {
     data.forEach((person)=>{
         // arr2
         peopleComponents.push(
-            <Col>
+            <Col xs={6} md={4} lg={3}>
                 <Person name={person.name} imgURL={person.imgUrl}/>
             </Col>
         );
