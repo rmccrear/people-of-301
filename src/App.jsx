@@ -6,6 +6,8 @@ import React from 'react';
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 {
   /* The following line can be included in your src/index.js or App.js file */
@@ -14,12 +16,48 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // step2 create a component
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalPersonName: "Robert",
+      modalImgUrl: "https://avatars.githubusercontent.com/u/113715288?v=4",
+      modalIsShowing: false
+    };
+  }
+
+  handleShow = () => {
+    console.log("PLEASE SHOW THE MODAL!!");
+    this.setState({
+      modalIsShowing: true
+    });
+  }
+
+  handleClose = () => {
+    this.setState({
+      modalIsShowing: false
+    }); 
+  }
 
   // we have a render function that returns JSX.
   render() {
     return (
       <div>
         <Header />
+        {/* <PersonDisplayModal /> */}
+        <Button variant="primary" 
+                onClick={this.handleShow}>
+          Launch modal
+        </Button>
+        <Modal show={this.state.modalIsShowing} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Person</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h2>{this.state.modalPersonName}</h2>
+            <img src={this.state.modalImgUrl} />
+          </Modal.Body>
+        </Modal>
+
         <Main />
         <Footer />
       </div>
