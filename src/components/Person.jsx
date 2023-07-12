@@ -22,7 +22,7 @@ class Person extends React.Component {
         });
     };
 
-    handleClickImage = (event) => {
+    handleClickImage = () => {
         this.props.handleOpenPerson(this.props.name, this.props.imgURL);
     }
 

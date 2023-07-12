@@ -19,8 +19,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalPersonName: "Robert",
-      modalPersonImgUrl: "https://avatars.githubusercontent.com/u/113715288?v=4",
+      modalPersonName: "",
+      modalPersonImgUrl: "",
       modalIsShowing: false
     };
   }
@@ -39,7 +39,6 @@ class App extends React.Component {
   }
 
   handleOpenPerson = (personName, personImgUrl) => {
-    console.log("open person " + personName, personImgUrl);
     this.setState({
       modalIsShowing: true,
       modalPersonName: personName,
@@ -52,6 +51,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+
         {/* <PersonDisplayModal /> */}
         <Modal show={this.state.modalIsShowing} onHide={this.handleClose}>
           <Modal.Header closeButton>
