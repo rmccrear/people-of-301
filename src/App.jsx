@@ -38,16 +38,19 @@ class App extends React.Component {
     }); 
   }
 
+  handleOpenPerson = (personName, personImgUrl) => {
+    console.log("open person " + personName, personImgUrl);
+    this.setState({
+      modalIsShowing: true
+    });
+  }
+
   // we have a render function that returns JSX.
   render() {
     return (
       <div>
         <Header />
         {/* <PersonDisplayModal /> */}
-        <Button variant="primary" 
-                onClick={this.handleShow}>
-          Launch modal
-        </Button>
         <Modal show={this.state.modalIsShowing} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Person</Modal.Title>
@@ -58,7 +61,7 @@ class App extends React.Component {
           </Modal.Body>
         </Modal>
 
-        <Main />
+        <Main handleOpenPerson={this.handleOpenPerson}/>
         <Footer />
       </div>
     );

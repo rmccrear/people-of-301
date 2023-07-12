@@ -24,7 +24,11 @@ class Main extends React.Component {
       // arr2
       peopleComponents.push(
         <Col xs={6} md={4} lg={3}>
-          <Person name={person.name} imgURL={person.imgUrl} />
+          <Person 
+            name={person.name} 
+            imgURL={person.imgUrl} 
+            handleOpenPerson={ this.props.handleOpenPerson }
+          />
         </Col>
       );
     });

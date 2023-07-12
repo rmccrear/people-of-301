@@ -22,13 +22,20 @@ class Person extends React.Component {
         });
     };
 
+    handleClickImage = (event) => {
+        this.props.handleOpenPerson(this.props.name, this.props.imgURL);
+    }
+
     render() {
         return (
             <div>
                 <h2>{this.props.name}</h2>
                 <p onClick={this.handleSayHi}>Say hi!</p>
                 <p>Has been greeted: {this.state.greetedCount} times.</p>
-                <img src={this.props.imgURL} />
+                <img 
+                    src={this.props.imgURL} 
+                    onClick={ this.handleClickImage } 
+                />
                 <p>hi nice to meet you.</p>
             </div>
         );
