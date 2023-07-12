@@ -31,6 +31,10 @@ Then got to GitHub and create your Repo WITHOUT A README.
 
 You can follow the directions for an existing repo.
 
+### Modal Feature Wireframe
+
+![diagram](./docs/wireframe-for-modal.png)
+
 ### Installing Bootstrap
 
 See https://react-bootstrap.netlify.app/docs/getting-started/introduction
