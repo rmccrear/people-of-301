@@ -20,7 +20,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       modalPersonName: "Robert",
-      modalImgUrl: "https://avatars.githubusercontent.com/u/113715288?v=4",
+      modalPersonImgUrl: "https://avatars.githubusercontent.com/u/113715288?v=4",
       modalIsShowing: false
     };
   }
@@ -41,7 +41,9 @@ class App extends React.Component {
   handleOpenPerson = (personName, personImgUrl) => {
     console.log("open person " + personName, personImgUrl);
     this.setState({
-      modalIsShowing: true
+      modalIsShowing: true,
+      modalPersonName: personName,
+      modalPersonImgUrl: personImgUrl
     });
   }
 
@@ -57,7 +59,7 @@ class App extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <h2>{this.state.modalPersonName}</h2>
-            <img src={this.state.modalImgUrl} />
+            <img src={this.state.modalPersonImgUrl} />
           </Modal.Body>
         </Modal>
 
