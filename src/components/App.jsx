@@ -8,7 +8,9 @@ import Main from './Main'
 import Footer from './Footer'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { Col, Row } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 
 import axios from 'axios';
 
@@ -56,7 +58,8 @@ class App extends React.Component {
       modalIsShowing: true,
       modalPersonName: personName,
       modalPersonImgUrl: personImgUrl,
-      people: data
+      people: data,
+      error: null
     });
   }
 
@@ -66,7 +69,17 @@ class App extends React.Component {
     // GET the data from the server
     // use API_SERVER env variable so we can easily change servers
     // when we need to (for deployment).
-    let result = await axios.get(`${API_SERVER}/search-by-home-state?homeState=Tennessee`);
+    let result;
+    // use a try statement to handle errors
+    try {
+      result = await axios.get(`${API_SERVER}/search-by-home-state?homeState=Tennessee`);
+    } catch (e) { // If there is an error, catch will execute.
+      this.setState({
+        error: e.message // The error will have a message. We can use that to inform the user.
+      });
+      return; // Return to stop the rest of the function from executing.
+    }
+
     // the people is returned as an array.
     // All the return values are returned from axios 
     // in the data property of the result object.
@@ -79,6 +92,7 @@ class App extends React.Component {
     });
   }
   handleLouisiana = async () => {
+    // TODO: add error handling
     let result = await axios.get(`${API_SERVER}/search-by-home-state?homeState=Louisiana`);
     let people = result.data;
     this.setState({
@@ -86,6 +100,7 @@ class App extends React.Component {
     });
   }
   handleTaiwan = async () => {
+    // TODO: add error handling
     let result = await axios.get(`${API_SERVER}/search-by-home-state?homeState=Taiwan`);
     let people = result.data;
     this.setState({
@@ -98,6 +113,11 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+        {
+          this.state.error ?
+          <Alert variant='danger'>{this.state.error}</Alert>
+          : ''
+        }
 
         {/* <PersonDisplayModal /> */}
         <Modal show={this.state.modalIsShowing} onHide={this.handleClose}>
