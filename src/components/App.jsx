@@ -7,6 +7,10 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { Col, Row } from 'react-bootstrap';
+
+import axios from 'axios';
 
 import data from './data.json';
 
@@ -22,7 +26,9 @@ class App extends React.Component {
     this.state = {
       modalPersonName: "",
       modalPersonImgUrl: "",
-      modalIsShowing: false
+      modalIsShowing: false,
+      // people: data
+      people: []
     };
   }
 
@@ -43,7 +49,30 @@ class App extends React.Component {
     this.setState({
       modalIsShowing: true,
       modalPersonName: personName,
-      modalPersonImgUrl: personImgUrl
+      modalPersonImgUrl: personImgUrl,
+      people: data
+    });
+  }
+
+  handleTennessee = async () => {
+    let result = await axios.get(`http://localhost:3001/search-by-home-state?homeState=Tennessee`);
+    let people = result.data;
+    this.setState({
+      people
+    });
+  }
+  handleLouisiana = async () => {
+    let result = await axios.get(`http://localhost:3001/search-by-home-state?homeState=Louisiana`);
+    let people = result.data;
+    this.setState({
+      people
+    });
+  }
+  handleTaiwan = async () => {
+    let result = await axios.get(`http://localhost:3001/search-by-home-state?homeState=Taiwan`);
+    let people = result.data;
+    this.setState({
+      people
     });
   }
 
@@ -64,7 +93,24 @@ class App extends React.Component {
           </Modal.Body>
         </Modal>
 
-        <Main people={data} handleOpenPerson={this.handleOpenPerson}/>
+        <Main people={this.state.people} handleOpenPerson={this.handleOpenPerson}/>
+        <Row className='p-3'>
+          <Col>
+            <Button onClick={this.handleTennessee}>
+              People from Tennessee
+            </Button>
+          </Col>
+          <Col>
+            <Button onClick={this.handleLouisiana}>
+              People from Louisiana
+            </Button>
+          </Col>
+          <Col>
+            <Button onClick={this.handleTaiwan}>
+              People from Taiwan
+            </Button>
+          </Col>
+        </Row>
         <Footer />
       </div>
     );
