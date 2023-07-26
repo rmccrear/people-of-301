@@ -20,7 +20,7 @@ class Main extends React.Component {
   // render function
   render() {
     let peopleComponents = [];
-    data.forEach((person) => {
+    this.props.people.forEach((person) => {
       // arr2
       peopleComponents.push(
         <Col xs={6} md={4} lg={3}>

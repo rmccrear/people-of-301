@@ -3,11 +3,12 @@ import React from 'react';
 
 // All of our components will be put in a 
 // folder called components.
-import Header from './components/Header'
-import Main from './components/Main'
-import Footer from './components/Footer'
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+
+import data from './data.json';
 
 {
   /* The following line can be included in your src/index.js or App.js file */
@@ -63,7 +64,7 @@ class App extends React.Component {
           </Modal.Body>
         </Modal>
 
-        <Main handleOpenPerson={this.handleOpenPerson}/>
+        <Main people={data} handleOpenPerson={this.handleOpenPerson}/>
         <Footer />
       </div>
     );
