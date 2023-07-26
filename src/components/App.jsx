@@ -12,7 +12,13 @@ import { Col, Row } from 'react-bootstrap';
 
 import axios from 'axios';
 
-import data from './data.json';
+// import data from './data.json';
+
+// get environment variables from .env file
+// for vite:
+const API_SERVER = import.meta.env.VITE_API_SERVER;
+// for create-react-app:
+// const API_SERVER = process.env.REACT_APP_API_SERVER;
 
 {
   /* The following line can be included in your src/index.js or App.js file */
@@ -54,22 +60,33 @@ class App extends React.Component {
     });
   }
 
+  // callback function for onClick
+  // Use async so it can access the backend asynchronously.
   handleTennessee = async () => {
-    let result = await axios.get(`http://localhost:3001/search-by-home-state?homeState=Tennessee`);
+    // GET the data from the server
+    // use API_SERVER env variable so we can easily change servers
+    // when we need to (for deployment).
+    let result = await axios.get(`${API_SERVER}/search-by-home-state?homeState=Tennessee`);
+    // the people is returned as an array.
+    // All the return values are returned from axios 
+    // in the data property of the result object.
+    // The data you are looking for might be deeper in the object,
+    // depending on the object structure.
+    // In our case, the data of our response is simply an array of people.
     let people = result.data;
     this.setState({
       people
     });
   }
   handleLouisiana = async () => {
-    let result = await axios.get(`http://localhost:3001/search-by-home-state?homeState=Louisiana`);
+    let result = await axios.get(`${API_SERVER}/search-by-home-state?homeState=Louisiana`);
     let people = result.data;
     this.setState({
       people
     });
   }
   handleTaiwan = async () => {
-    let result = await axios.get(`http://localhost:3001/search-by-home-state?homeState=Taiwan`);
+    let result = await axios.get(`${API_SERVER}/search-by-home-state?homeState=Taiwan`);
     let people = result.data;
     this.setState({
       people
